@@ -14,14 +14,25 @@ const User = ()=>{
     },[])
 
     console.log(userList)
-
-
-
-    return(
+      return(
         <div>
-            
+                {userList && userList.map((list,index) =>{
+            return(
+              
+                <div key={index}>
+                    <img src={list.picture.large}></img>
+                    <h3>{list.name.title}. {list.name.first} {list.name.last}</h3>
+                    <p>Age: {list.dob.age} years old</p>
+                    <p>City: {list.location.city}, {list.location.country}</p>
+                </div>
+            )
+    
+        })}
         </div>
-    )
+    
+      )
+  
+   
 }
 
 export default User
