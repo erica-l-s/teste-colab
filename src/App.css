@@ -24,7 +24,7 @@
   overflow: hidden;
   text-align: center;
   z-index: 5;
-  background-color: #cfcfc9;
+  background-color: #f3ebf1;
 }
 
 .card .user-photo{
@@ -40,11 +40,11 @@
 }
 
 .card .detail button{
-  position: absolute;
-  bottom: 80px;
+  position: fixed;
+  top: 250px;
   left: 45%;
   padding: 10px 15px;
-  margin: 20px auto;
+  margin: 30px auto;
   color: rgb(236, 232, 232);
   background:#333;
   border-radius: 3px;
@@ -71,6 +71,12 @@
   flex-direction: column;
 }
 
+.card #user-title{
+color: #999;
+font-size: 18px;
+margin-bottom: 15px;
+}
+
 .app-icons{
   display: flex;
   justify-content: center;
@@ -78,7 +84,7 @@
 }
 
 .app--icons .fas{
-margin: 0 30px;
+margin: 30px 30px;
 transition: all 0.2s ease-in-out;
 }
 
@@ -88,6 +94,7 @@ transition: all 0.2s ease-in-out;
   color: rgb(98, 98, 201);
 }
 
-.icon{
- 
+
+@media screen {
+  
 }

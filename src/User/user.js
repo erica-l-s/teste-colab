@@ -53,8 +53,8 @@ const User = ()=>{
         ]
 
        return(<div className="info">
-        <p>{phrases[activeLink]}</p>
-        <h1>{info[activeLink]}</h1>
+        <p id="user-title">{phrases[activeLink]}</p>
+        <h3>{info[activeLink]}</h3>
         </div>)
        
     }
