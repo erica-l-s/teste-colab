@@ -7,6 +7,19 @@
 - ReactJs
 - React Hooks
 
+## Para iniciar o projeto utilizr: 
+
+```
+npm install
+
+```
+e depois 
+
+```
+npm run start
+
+```
+
 ### API utilizada para pegar os usuários:
 
 - https://randomuser.me/api/
