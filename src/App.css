@@ -57,4 +57,5 @@ transition: all 0.2s ease-in-out;
 .app--icons .fas:hover{
   transform: scale(1.1);
   cursor: pointer;
+  color: rgb(98, 98, 201);
 }

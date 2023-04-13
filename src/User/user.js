@@ -3,6 +3,8 @@ import { useEffect,useState } from "react"
 
 const User = ()=>{
     const [userList, setUserList] = useState([])
+    const [activeLink, setActiveLink] = useState(0)
+    
     
 
    const user = ()=>{
@@ -21,19 +23,51 @@ const User = ()=>{
         onClickUser()
     },[])
 
+    const icons = [
+        'fas fa-user fa-2x',
+        'fas fa-envelope fa-2x',
+        'fas fa-calendar-alt fa-2x',
+        'fas fa-map-marker fa-2x',
+        'fas fa-phone fa-2x',
+        'fas fa-lock fa-2x',
+    ]
+
+    const PhraseGenerator = ({user}) =>{
+        
+        const phrases = [
+            `Hi my name is ${user.name.first} ${user.name.last}`,
+            `My email address is ${user.email}`,
+            `My birthday is ${user.dob.date.slice(0,10)}`,
+            `My address is ${user.location.street.name}`,
+            `My phone number is ${user.phone}`,
+            `My password is ${user.login.password}`,
+        ]
+        return<h1>{phrases[activeLink]}</h1>
+       
+    }
+
+    const activeLinkHandler = (index) =>{
+     setActiveLink(index)
+    }
+
      return(
         <div>
-           
-            
+                       
                 {userList && userList.map((list,index) =>{
             return(
               
                 <div key={index}>
                     <img src={list.picture.large}></img>
                     <button value={userList} onClick={onClickUser}>New</button>
-                    <h3 id="name">{list.name.title}. {list.name.first} {list.name.last}</h3>
-                    <p>Age: {list.dob.age} years old</p>
-                    <p>City: {list.location.city}, {list.location.country}</p>
+                   <PhraseGenerator user={list}/>
+                   <div className="app--icons">
+                    {icons.map((icon,index)=>{
+                        return(
+                            <i className={icon} key={index} onMouseMove={()=>activeLinkHandler(index)}></i>
+                        )
+                    })}
+
+                   </div>
 
                   
                 </div>
