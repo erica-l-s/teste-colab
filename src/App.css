@@ -1,10 +1,12 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.App{
+
+.App {
+ 
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,12 +15,13 @@
   height: 100vh;
   overflow: hidden;
   background-color: #a8a8a5;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
-.card{
+
+.card {
   position: relative;
   padding: 20px 0;
-  width: 80%;
+  width: 50%;
   border-radius: 3px;
   box-shadow: 2px 2px 5px 2px rgb(27, 27, 27);
   overflow: hidden;
@@ -27,7 +30,7 @@
   background-color: #f3ebf1;
 }
 
-.card .user-photo{
+.card .user-photo {
   position: relative;
   background: #fff;
   padding: 5px;
@@ -39,14 +42,14 @@
 
 }
 
-.card .detail button{
-  position: fixed;
-  top: 250px;
+.card .detail button {
+  position: absolute;
+  top: 140px;
   left: 45%;
   padding: 10px 15px;
   margin: 30px auto;
   color: rgb(236, 232, 232);
-  background:#333;
+  background: #333;
   border-radius: 3px;
   text-decoration: none;
   display: block;
@@ -57,12 +60,13 @@
   transition: all .25s ease-in-out;
 }
 
-.card .detail button:hover{
+.card .detail button:hover {
   opacity: 0.9;
- 
+
 }
 
-.app-user{
+
+.app-user {
   width: auto;
   height: auto;
   display: flex;
@@ -71,30 +75,37 @@
   flex-direction: column;
 }
 
-.card #user-title{
-color: #999;
-font-size: 18px;
-margin-bottom: 15px;
+.card #user-title {
+  color: #999;
+  font-size: 18px;
+  margin-bottom: 15px;
 }
 
-.app-icons{
+.app-icons {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.app--icons .fas{
-margin: 30px 30px;
-transition: all 0.2s ease-in-out;
+.app--icons .fas {
+  margin: 30px 30px;
+  transition: all 0.2s ease-in-out;
 }
 
-.app--icons .fas:hover{
+.app--icons .fas:hover {
   transform: scale(1.1);
   cursor: pointer;
   color: rgb(98, 98, 201);
 }
 
 
-@media screen {
-  
+@media (max-width:600px) {
+  .card{
+    width: 90%;
+  }
+  .card .detail button {
+    margin: 30px auto;
+    opacity: 0.9;
+
+  }
 }

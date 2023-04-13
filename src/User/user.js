@@ -1,27 +1,25 @@
-import { useEffect,useState } from "react"
+import { useEffect, useState } from "react"
 import axios from 'axios'
 
-const User = ()=>{
+const User = () => {
     const [userList, setUserList] = useState([])
     const [activeLink, setActiveLink] = useState(0)
-    
-    
 
-   const user = ()=>{
+    const user = () => {
         axios.get('https://randomuser.me/api/')
-         .then((response)=>{
-            setUserList(response.data.results)
-         })
+            .then((response) => {
+                setUserList(response.data.results)
+            })
     }
-   console.log(userList)
-    const onClickUser = () =>{
+    console.log(userList)
+    const onClickUser = () => {
         user()
         setUserList()
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         onClickUser()
-    },[])
+    }, [])
 
     const icons = [
         'fas fa-user fa-2x',
@@ -32,8 +30,8 @@ const User = ()=>{
         'fas fa-lock fa-2x',
     ]
 
-    const PhraseGenerator = ({user}) =>{
-        
+    const PhraseGenerator = ({ user }) => {
+
         const phrases = [
             `Hi my name is `,
             `My email address is `,
@@ -46,57 +44,48 @@ const User = ()=>{
         const info = [
             `${user.name.first} ${user.name.last}`,
             `${user.email}`,
-            `${user.dob.date.slice(0,10)}`,
+            `${user.dob.date.slice(0, 10)}`,
             `${user.location.street.name}`,
             `${user.phone}`,
             `${user.login.password}`
         ]
 
-       return(<div className="info">
-        <p id="user-title">{phrases[activeLink]}</p>
-        <h3>{info[activeLink]}</h3>
+        return (<div className="info">
+            <p id="user-title">{phrases[activeLink]}</p>
+            <h3>{info[activeLink]}</h3>
         </div>)
-       
     }
 
-    const activeLinkHandler = (index) =>{
-     setActiveLink(index)
+    const activeLinkHandler = (index) => {
+        setActiveLink(index)
     }
 
-     return(
+    return (
         <div className="card">
-           <div className="detail">
-           {userList && userList.map((list,index) =>{
-            return(
-              
-                <div key={index}>
-                    <div>
-                        <img src={list.picture.large} className="user-photo"></img>
-                        <button value={userList} onClick={onClickUser} >New</button>
-                    </div>
-                    
-                   <PhraseGenerator user={list}/>
-                   <div className="app--icons">
-                    {icons.map((icon,index)=>{
-                        return(
-                            <i className={icon} key={index} onMouseMove={()=>activeLinkHandler(index)}></i>
-                        )
-                    })}
-                 
-                   </div>
-                  
-                  
-                </div>
-            )
-    
-        })}
-           </div>
-      
+            <div className="detail">
+                {userList && userList.map((list, index) => {
+                    return (
+
+                        <div key={index}>
+                            <div>
+                                <img src={list.picture.large} className="user-photo"></img>
+                                <button value={userList} onClick={onClickUser}>New</button>
+                            </div>
+
+                            <PhraseGenerator user={list} />
+                            <div className="app--icons">
+                                {icons.map((icon, index) => {
+                                    return (
+                                        <i className={icon} key={index} onMouseMove={() => activeLinkHandler(index)}></i>
+                                    )
+                                })}
+                            </div>
+                        </div>
+                    )
+                })}
+            </div>
         </div>
-    
-      )
-  
-   
+    )
 }
 
 export default User
