@@ -1,5 +1,5 @@
-import axios from "axios"
 import { useEffect,useState } from "react"
+import axios from 'axios'
 
 const User = ()=>{
     const [userList, setUserList] = useState([])
@@ -35,14 +35,27 @@ const User = ()=>{
     const PhraseGenerator = ({user}) =>{
         
         const phrases = [
-            `Hi my name is ${user.name.first} ${user.name.last}`,
-            `My email address is ${user.email}`,
-            `My birthday is ${user.dob.date.slice(0,10)}`,
-            `My address is ${user.location.street.name}`,
-            `My phone number is ${user.phone}`,
-            `My password is ${user.login.password}`,
+            `Hi my name is `,
+            `My email address is `,
+            `My birthday is `,
+            `My address is `,
+            `My phone number is `,
+            `My password is `,
         ]
-        return<h1>{phrases[activeLink]}</h1>
+
+        const info = [
+            `${user.name.first} ${user.name.last}`,
+            `${user.email}`,
+            `${user.dob.date.slice(0,10)}`,
+            `${user.location.street.name}`,
+            `${user.phone}`,
+            `${user.login.password}`
+        ]
+
+       return(<div className="info">
+        <p>{phrases[activeLink]}</p>
+        <h1>{info[activeLink]}</h1>
+        </div>)
        
     }
 
@@ -51,14 +64,17 @@ const User = ()=>{
     }
 
      return(
-        <div>
-                       
-                {userList && userList.map((list,index) =>{
+        <div className="card">
+           <div className="detail">
+           {userList && userList.map((list,index) =>{
             return(
               
                 <div key={index}>
-                    <img src={list.picture.large}></img>
-                    <button value={userList} onClick={onClickUser}>New</button>
+                    <div>
+                        <img src={list.picture.large} className="user-photo"></img>
+                        <button value={userList} onClick={onClickUser} >New</button>
+                    </div>
+                    
                    <PhraseGenerator user={list}/>
                    <div className="app--icons">
                     {icons.map((icon,index)=>{
@@ -66,14 +82,16 @@ const User = ()=>{
                             <i className={icon} key={index} onMouseMove={()=>activeLinkHandler(index)}></i>
                         )
                     })}
-
+                 
                    </div>
-
+                  
                   
                 </div>
             )
     
         })}
+           </div>
+      
         </div>
     
       )
